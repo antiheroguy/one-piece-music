@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0a6a77a5-114f-4d4c-9ea3-afee63a882f3/deploy-status)](https://app.netlify.com/sites/one-piece-music/deploys)
+
 # One Piece Music
 
 ## Project setup
