@@ -2,21 +2,17 @@
   "name": "one-piece-music",
   "version": "1.0.0",
   "private": true,
-  "main": "server.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
-    "build": "vue-cli-service build",
-    "start": "node server.js"
+    "build": "vue-cli-service build"
   },
   "dependencies": {
     "axios": "^0.21.2",
     "boostrap": "^2.0.0",
     "bootstrap-vue": "^2.0.0-rc.22",
     "core-js": "^2.6.5",
-    "cors": "^2.8.5",
     "dotenv": "^8.0.0",
-    "express": "^4.17.1",
     "mongoose": "^5.5.12",
     "vue": "^2.6.10"
   },
@@ -30,33 +26,5 @@
     "sass": "^1.20.3",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.10"
-  },
-  "engines": {
-    "node": ">=14 <15"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {
-      "no-console": "off"
-    },
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+  }
 }
