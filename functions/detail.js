@@ -1,6 +1,6 @@
 const { model } = require('../services/mongo')
 
-exports.handler = async ({ episode }) => {
+exports.handler = async ({ queryStringParameters: { episode } }) => {
   try {
     const item = episode !== null ?
       await model.findOne({ episode }).exec()
