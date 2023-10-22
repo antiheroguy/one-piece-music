@@ -12,19 +12,18 @@ exports.handler = async ({ queryStringParameters: { api_key: apiKey, page } }) =
       throw new Error('Api key is invalid')
     }
 
-    if (!page || !Number.isInteger(page) || page < 1) {
+    if (!page || +page < 1) {
       throw new Error('Invalid parameter')
     }
 
     model.collection.drop()
     for (let p = 1; p <= page; p++) {
-      const params = {}
-      if (p > 1) {
-        params.page = p
-      }
-
       try {
-        const { data: { episodes } } = await axios.get(process.env.DATA_SRC, { params })
+        const { data: { episodes } } = await axios.get(process.env.DATA_SRC, {
+          params: {
+            page: p
+          }
+        })
         await model.insertMany(episodes)
       } catch (err) {
         // Do nothing
