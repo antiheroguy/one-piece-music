@@ -1,6 +1,6 @@
 require('dotenv').config()
 const axios = require('axios')
-const { model } = require('./mongo')
+const { model } = require('./services/mongo')
 
 exports.handler = async ({ queryStringParameters: { api_key: apiKey, page } }) => {
   try {
