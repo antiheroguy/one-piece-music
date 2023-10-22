@@ -2,7 +2,7 @@ require('dotenv').config()
 const axios = require('axios')
 const { model } = require('../services/mongo')
 
-exports.handler = async ({ queryStringParameters: { api_key: apiKey, page } }) => {
+exports.handler = async ({ queryStringParameters: { api_key: apiKey, from = 1, to } }) => {
   try {
     if (!apiKey) {
       throw new Error('Missing api key')
@@ -12,18 +12,14 @@ exports.handler = async ({ queryStringParameters: { api_key: apiKey, page } }) =
       throw new Error('Api key is invalid')
     }
 
-    if (!page || +page < 1) {
+    if (!to || +to < 1 || (+from > +to)) {
       throw new Error('Invalid parameter')
     }
 
     model.collection.drop()
-    for (let p = 1; p <= page; p++) {
+    for (let page = from; page <= to; page++) {
       try {
-        const { data: { episodes } } = await axios.get(process.env.DATA_SRC, {
-          params: {
-            page: p
-          }
-        })
+        const { data: { episodes } } = await axios.get(process.env.DATA_SRC, { params: { page } })
         await model.insertMany(episodes)
       } catch (err) {
         // Do nothing
