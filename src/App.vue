@@ -66,7 +66,6 @@ export default {
     title: '',
     release: '',
     selected: null,
-    apiEndpoint: process.env.VUE_APP_API_ENDPOINT || '/api',
   }),
 
   mounted() {
@@ -83,13 +82,13 @@ export default {
 
   methods: {
     async getList() {
-      const { data } = await axios.get(`${this.apiEndpoint}/list`)
+      const { data } = await axios.get('/api/list')
       this.episodes = data
       this.selected = data[0].episode
     },
 
     async getEpisode() {
-      const { data } = await axios.get(`${this.apiEndpoint}/detail`, {
+      const { data } = await axios.get('/api/detail', {
         params: {
           episode: this.selected
         }
