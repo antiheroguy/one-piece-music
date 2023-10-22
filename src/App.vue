@@ -74,7 +74,7 @@ export default {
 
   watch: {
     selected(episode) {
-      if (episode) {
+      if (episode !== null) {
         this.getEpisode()
       }
     }
