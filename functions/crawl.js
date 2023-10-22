@@ -16,7 +16,11 @@ exports.handler = async ({ queryStringParameters: { api_key: apiKey, from = 1, t
       throw new Error('Invalid parameter')
     }
 
-    model.collection.drop()
+    // Drop only for the first page
+    if (from === 1) {
+      model.collection.drop()
+    }
+
     for (let page = from; page <= to; page++) {
       try {
         const { data: { episodes } } = await axios.get(process.env.DATA_SRC, { params: { page } })
