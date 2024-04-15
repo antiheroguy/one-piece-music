@@ -33,7 +33,12 @@ const model = mongoose.model('track', {
   }]
 })
 
+const page = mongoose.model('page', {
+  number: Number
+})
+
 module.exports = {
   mongoose,
-  model
+  model,
+  page
 }
